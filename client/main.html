@@ -1,0 +1,24 @@
+<head>
+  <title>simple</title>
+</head>
+
+<body>
+<h1>Welcome to Meteor!</h1>
+{{> search }}
+</body>
+
+<template name="search">
+  {{> EasySearch.Input index=index}}
+
+  {{#EasySearch.IfSearching index=index}}
+    <p>loading...</p>
+  {{else}}
+    {{#EasySearch.IfNoResults index=index}}
+      <div class="no-results"><h4>No results found!</h4></div>
+    {{else}}
+      {{#EasySearch.Each index=index}}
+        <div class="result">{{name}}</div>
+      {{/EasySearch.Each}}
+    {{/EasySearch.IfNoResults}}
+  {{/EasySearch.IfSearching}}
+</template>
